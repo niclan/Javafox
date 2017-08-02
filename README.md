@@ -13,5 +13,5 @@ https://192.168.254.0
 https://192.168.254.1
 ```
 
-1. Run ```docker build -t firefox .```  This makes a Ubuntu 16.04 docker image labeled "firefox" containing firefox, java, flash (broken right now), and a account called ffuser.  The image is >1GB at time of creation and will grow some as firefox and java accumulates cached files from the sites you surf.
-
+6. Run ```docker build -t firefox .```  This makes a Ubuntu 16.04 docker image labeled "firefox" containing firefox, java, flash (broken right now), and a account called ffuser.  The image is >1GB at time of creation and will grow some as firefox and java accumulates cached files from the sites you surf.
+1. Floppa
