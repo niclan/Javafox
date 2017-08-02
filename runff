@@ -1,0 +1,8 @@
+#!/bin/bash
+
+XSOCK=/tmp/.X11-unix
+XAUTH="$(mktemp)"
+
+xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
+
+sudo docker run -v /tmp/.X11-unix -v $XAUTH -e XAUTHORITY=$XAUTH firefox
