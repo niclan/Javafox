@@ -3,12 +3,15 @@ FROM ubuntu:16.04
 
 COPY firefox /usr/local/firefox
 
-# Also install firefox to pull in all dependencies
+# Also install firefox to pull in all dependencies but move it so that
+# the right version is the only runable one.
 
 RUN apt-get -q update && \
     apt-get -qqy dist-upgrade && \
     apt-get -qqy install sudo apt-utils libterm-readline-perl-perl \
-    	    software-properties-common xauth x11-apps firefox
+    	    software-properties-common xauth x11-apps firefox && \
+    mv /usr/bin/firefox /usr/bin/firefox-54 && \
+    ln -s /usr/local/firefox/firefox /usr/bin
 
 RUN apt-get -qqy install flashplugin-installer
 
