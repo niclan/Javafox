@@ -15,7 +15,7 @@ https://192.168.254.0
 https://192.168.254.1
 ```
 
-6. Run ```docker build -t firefox .```  This makes a Ubuntu 16.04 docker image labeled "firefox" containing firefox, java, flash (broken right now), and a account called ffuser.  The image is >1GB at time of creation and will grow some as firefox and java accumulates cached files from the sites you surf.
+6. Run ```sudo docker build -t firefox .```  This makes a Ubuntu 16.04 docker image labeled "firefox" containing firefox, java, flash (broken right now), and a account called ffuser.  The image is >1GB at time of creation and will grow some as firefox and java accumulates cached files from the sites you surf.
 
 ## Using
 
@@ -29,6 +29,3 @@ Lots!  I have no idea why:
 * Having firefox run as the default command always crashes
 * Why it crashes the first time you run it from the bash prompt
 * Why flash is not active (also needed for some management apps)
-
-
-
