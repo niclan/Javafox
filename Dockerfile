@@ -1,6 +1,5 @@
 FROM ubuntu:16.04
 
-
 COPY firefox /usr/local/firefox
 
 # Also install firefox to pull in all dependencies but move it so that
@@ -9,7 +8,8 @@ COPY firefox /usr/local/firefox
 RUN apt-get -q update && \
     apt-get -qqy dist-upgrade && \
     apt-get -qqy install sudo apt-utils libterm-readline-perl-perl \
-    	    software-properties-common xauth x11-apps firefox && \
+    	    software-properties-common xauth x11-apps firefox \
+	    desktop-file-utils && \
     mv /usr/bin/firefox /usr/bin/firefox-54 && \
     ln -s /usr/local/firefox/firefox /usr/bin
 
@@ -18,7 +18,7 @@ RUN apt-get -qqy install flashplugin-installer
 RUN export uid=1000 gid=1000 && \
     mkdir -p /home/ffuser/.java/deployment/security/ && \
     mkdir -p /etc/sudoers.d && \
-    echo "ffuser:x:${uid}:${gid}:Ffuser,,,:/home/ffuser:/bin/bash" >> /etc/passwd && \
+    echo "ffuser:x:${uid}:${gid}:Firefox user:/home/ffuser:/bin/bash" >> /etc/passwd && \
     echo "ffuser:x:${uid}:" >> /etc/group && \
     echo "ffuser ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/ffuser && \
     chmod 0440 /etc/sudoers.d/ffuser && \
