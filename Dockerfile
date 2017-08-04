@@ -1,17 +1,18 @@
 FROM ubuntu:16.04
 
-COPY firefox /usr/local/firefox
+# COPY firefox /usr/local/firefox
 
 # Also install firefox to pull in all dependencies but move it so that
 # the right version is the only runable one.
 
 RUN apt-get -q update && \
-    apt-get -qqy dist-upgrade && \
-    apt-get -qqy install sudo apt-utils libterm-readline-perl-perl \
-    	    software-properties-common xauth x11-apps firefox \
-	    desktop-file-utils && \
-    mv /usr/bin/firefox /usr/bin/firefox-54 && \
-    ln -s /usr/local/firefox/firefox /usr/bin
+    apt-get -qy dist-upgrade && \
+    apt-get -qy install sudo apt-utils libterm-readline-perl-perl \
+    	    software-properties-common xauth x11-apps desktop-file-utils
+
+RUN apt-add-repository -y ppa:jonathonf/firefox-esr && \
+    apt-get -q update && \
+    apt-get -qy install firefox-esr
 
 RUN apt-get -qqy install flashplugin-installer
 
@@ -30,11 +31,12 @@ RUN echo debconf shared/accepted-oracle-license-v1-1 select true | \
     debconf-set-selections && \
     echo debconf shared/accepted-oracle-license-v1-1 seen true | \
     debconf-set-selections && \
-    apt-add-repository ppa:webupd8team/java && \
-    apt-get update && \
+    apt-add-repository -y ppa:webupd8team/java && \
+    apt-get -q update && \
     apt-get -qy install oracle-java8-installer && \
     ln -s /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnpjp2.so /usr/lib/mozilla/plugins
 
 USER ffuser
 ENV HOME /home/ffuser
-CMD /usr/local/firefox/firefox
+CMD /usr/bin/firefox
+
