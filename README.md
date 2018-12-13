@@ -5,25 +5,19 @@ Java is going out of style and yet is needed to manage many different lights out
 ## Installing
 
 1. Install docker (docker.io)
-1. Clone this repository
-1. To allow Java to run the unsecurely and out-of-date signed java apps you need to make security exceptions.   Make a file called "exception.sites" in this kind of format:
+
+2. Clone this repository
+
+3. Run ```docker build -t javafox .```  This makes a Ubuntu 16.04 docker image labeled "javafox" containing firefox-esr-52, java, flash and a account called ffuser.  The image is >1GB at time of creation and will grow some as firefox and java accumulates cached files from the sites you surf.
+
+## Using
+
+```./javafox``` starts the docker container. Type "about:" in the address bar to see that you have version 52.  Type "about:plugins" to see that Java and Flash is working.
+
+To allow Java to run the unsecurely and out-of-date signed java apps you need to make security exceptions.
+To do this first start the docker image with ```./javafox``` you should then have a file in $HOME/.javafox/.java/deployment/security/exception.sites where you can add your exceptions like this:
 
 ```
 https://192.168.254.0
 https://192.168.254.1
 ```
-
-6. Run ```sudo docker build -t firefox .```  This makes a Ubuntu 16.04 docker image labeled "firefox" containing firefox, java, flash (broken right now), and a account called ffuser.  The image is >1GB at time of creation and will grow some as firefox and java accumulates cached files from the sites you surf.
-
-## Using
-
-We have problems but it will work.
-
-```./runff``` starts the docker container, it gives you a bash prompt.  Type "firefox".  It might crash.  Start it again, it should come up.  Type "about:" in the address bar to see that you have version 52.  Type "about:plugins" to see that Java is working.
-
-## Bugs:
-
-Lots!  I have no idea why:
-* Having firefox run as the default command always crashes
-* Why it crashes the first time you run it from the bash prompt
-* Why flash is not active (also needed for some management apps)
