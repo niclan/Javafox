@@ -8,7 +8,7 @@ Java is going out of style and yet is needed to manage many different lights out
 
 2. Clone this repository
 
-3. Run ```docker build -t javafox .```  This makes a Ubuntu 16.04 docker image labeled "javafox" containing firefox-esr-52, java, flash and a account called ffuser.  The image is >1GB at time of creation and will grow some as firefox and java accumulates cached files from the sites you surf.
+3. Run ```docker build -t javafox .```  This makes a Ubuntu 16.04 docker image labeled "javafox" containing firefox-esr-52, java, flash and a account called ffuser.  The image is >1GB at time of creation. It will save caches and other config (java and firefox) outside the container in ~/.javafox.
 
 ## Using
 
@@ -21,3 +21,7 @@ To do this first start the docker image with ```./javafox``` you should then hav
 https://192.168.254.0
 https://192.168.254.1
 ```
+
+## Thanks
+
+Thanks to Ole for making this usable!
