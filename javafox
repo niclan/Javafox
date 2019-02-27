@@ -4,17 +4,28 @@ XSOCK=/tmp/.X11-unix
 XAUTHD="$(mktemp -d)"
 XAUTH="$XAUTHD/xauth"
 
-xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
+BASE="${HOME}/.javafox"
+me=$(basename $0)
+case $me in
+    firefox-*)
+        IMAGE=${me/-/:}
+        BASE="${BASE}/instance/${me}"
+        ;;
+    *)
+        IMAGE=javafox ;;
+esac
 
-if [ ! -d "${HOME}/.javafox/" ]; then
-  mkdir -p "${HOME}/.javafox"
-  mkdir -p "${HOME}/.javafox/.mozilla"
-  mkdir -p "${HOME}/.javafox/.java/deployment/security"
-  touch "${HOME}/.javafox/.java/deployment/security/exception.sites"
-fi
+# xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 
-docker run --rm --net=host -v $XSOCK:$XSOCK -v $XAUTHD:$XAUTHD -e XAUTHORITY=$XAUTH \
+xauth extract $XAUTH $DISPLAY
+
+mkdir -p "${BASE}/.mozilla"
+chmod 1777 "${BASE}/.mozilla"
+mkdir -p "${BASE}/.java/deployment/security"
+touch "${BASE}/.java/deployment/security/exception.sites"
+
+docker run -ti --rm --net=host -v $XSOCK:$XSOCK -v $XAUTHD:$XAUTHD -e XAUTHORITY=$XAUTH \
        -e DISPLAY=$DISPLAY \
-       -v "${HOME}/.javafox/.java:/home/ffuser/.java" -v "${HOME}/.javafox/.mozilla:/home/ffuser/.mozilla" javafox $@
+       -v "${BASE}/.java:/home/ffuser/.java" -v "${BASE}/.mozilla:/home/ffuser/.mozilla" ${IMAGE} "$@"
 
 rm -rf $XAUTHD
