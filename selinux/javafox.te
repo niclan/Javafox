@@ -1,0 +1,11 @@
+
+module javafox 1.0;
+
+require {
+	type xserver_t;
+	type container_t;
+	class unix_stream_socket connectto;
+}
+
+#============= container_t ==============
+allow container_t xserver_t:unix_stream_socket connectto;
