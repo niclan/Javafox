@@ -1,0 +1,32 @@
+FROM i386/ubuntu:14.04
+
+ENV BASEURL https://ftp.mozilla.org/pub/firefox/releases
+ARG RELEASE=2.0.0.20
+
+RUN apt-get -q update && \
+    apt-get -qy dist-upgrade && \
+    apt-get -qy install wget sudo xauth libstdc++5 \
+                        libxt6 libgtk2.0-0 libpangoxft-1.0-0 libpangox-1.0-0 && \
+    apt-get -qy install libasound2 libdbus-glib-1-2
+
+RUN case $RELEASE in 2.*) ext=tar.gz; z=z ;; *) ext=tar.bz2; z=j ;; esac; \
+    PROG=/usr/bin/firefox-esr && \
+    wget -O /tmp/ff.tgz $BASEURL/$RELEASE/linux-i686/en-US/firefox-$RELEASE.$ext && \
+    mkdir -p /opt && cd /opt && \
+    tar ${z}xf /tmp/ff.tgz && rm /tmp/ff.tgz && \
+    echo '#! /bin/bash' > $PROG && \
+    echo 'LD_LIBRARY_PATH=/opt/firefox exec /opt/firefox/firefox "$@"' >> $PROG && \
+    chmod a+rx $PROG
+
+RUN apt-get -y install 
+
+RUN useradd -m -s /bin/bash -c "Firefox user" ffuser && \
+    mkdir -p /etc/sudoers.d && \
+    echo "ffuser ALL=(ALL) NOPASSWD: /bin/cat" > /etc/sudoers.d/ffuser && \
+    chmod 0440 /etc/sudoers.d/ffuser
+
+USER ffuser
+
+COPY entrypoint.sh /home/ffuser
+
+ENTRYPOINT [ "/home/ffuser/entrypoint.sh" ]

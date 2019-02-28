@@ -11,7 +11,7 @@ RUN apt-add-repository -y ppa:jonathonf/firefox-esr-52 && \
 
 RUN useradd -m -s /bin/bash -c "Firefox user" ffuser && \
     mkdir -p /etc/sudoers.d && \
-    echo "ffuser ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/ffuser && \
+    echo "ffuser ALL=(ALL) NOPASSWD: /bin/cat" > /etc/sudoers.d/ffuser && \
     chmod 0440 /etc/sudoers.d/ffuser
 
 RUN echo debconf shared/accepted-oracle-license-v1-1 select true | \
@@ -30,4 +30,3 @@ RUN mkdir -p /home/ffuser/.java/deployment/security && \
 COPY entrypoint.sh /home/ffuser
 
 ENTRYPOINT [ "/home/ffuser/entrypoint.sh" ]
-
