@@ -49,4 +49,4 @@ Fedora 29).
 
 ## Thanks
 
-Thanks to Ole for making this usable!
+Thanks to Ole for making this usable! And to Kjetilho for supporting ancient Firefoxen.
