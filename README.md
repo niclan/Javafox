@@ -2,7 +2,7 @@
 
 Java is going out of style and yet is needed to manage many different lights out management systems such as HPs iLO and such.  To be able to continue manage hardware some specific combinations of browsers and java is needed.
 
-Thanks to a pull request you can now also run ancient Firefoxes for those that need browsers to support ancient BMCs.
+Thanks to a pull request you can now also run ancient Firefoxes for those that need browsers to support ancient BMCs with ancient now-unsupported https: encryption.
 
 ## Installing
 
