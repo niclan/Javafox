@@ -4,20 +4,11 @@ Java is going out of style and yet is needed to manage many different lights out
 
 Thanks to a pull request you can now also run ancient Firefoxes for those that need browsers to support ancient BMCs with ancient now-unsupported https: encryption.
 
-# Oracle license
+## Oracle 
 
-As of 2019-04-16 Oracle has changed the license for Java to a **very restrictive** license making these uses legal:
+As of 2019-04-16 Oracle has changed the license for Java to a **very restrictive** license which is at odds with using this package at work at all.  Therefore the package has been updatet to use OpenJDK and the IcedTea Firefox plugin.  I have not tested the IcedTea plugin with e.g. HP iLO at all yet due to work and personal priorities.
 
-```
-(i)     Personal Use,
-(ii)    Development Use,
-(iii)   Oracle Approved Product Use, and/or
-(iv)    Oracle Cloud Infrastructure Use.
-```
-
-The definition of "personal use" is such that you can't use "Javafox" with Oracle JDK for work purposes in any way without breaking their license.  Therefore you can at this point only use build newly built "Javafox" docker files with personal computers for personal purposes, for personally owned lights out systems unless you have a license from Oracle.  Thread carefuly.
-
-This package needs to be using OpenJDK. See https://github.com/niclan/Javafox/issues/8.
+If you need to use Oracle Java 8 please refer to commit dd7ccd6 (https://github.com/niclan/Javafox/tree/dd7ccd683f61444b027779e2bdddd7be1bd9eac8) and note that you can not use it with anything but personal computers and personally owned equipment in any way.
 
 ## Installing
 
@@ -25,18 +16,13 @@ This package needs to be using OpenJDK. See https://github.com/niclan/Javafox/is
 
 2. Clone this repository
 
-3. Download java (JRE 8 for Linux/AMD64 the tar.gz version) from https://www.oracle.com/technetwork/java/javase/jre8-downloads-2133155.html.
-
-4. Rename the jre to `jre-linux-x64.tar.gz`
-
-4. Run ```docker build -t javafox .```  This makes a Ubuntu 16.04 docker image labeled "javafox" containing firefox-esr-52, java, flash and a account called ffuser.  The image is >1GB at time of creation. It will save caches and other config (java and firefox) outside the container in your home directory under ~/.javafox.
+3. Run ```docker build -t javafox .```  This makes a Ubuntu 16.04 docker image labeled "javafox" containing firefox-esr-52, java, flash and a account called ffuser.  The image is >1GB at time of creation. It will save caches and other config (java and firefox) outside the container in your home directory under ~/.javafox.
 
 ## Using
 
 ```./javafox``` starts the docker container. Type "about:" in the address bar to see that you have version 52.  Type "about:plugins" to see that Java and Flash is working.
 
-To allow Java to run the unsecurely and out-of-date signed java apps you need to make security exceptions.
-To do this first start the docker image with ```./javafox``` you should then have a file in $HOME/.javafox/.java/deployment/security/exception.sites where you can add your exceptions like this:
+To allow Java to run the unsecurely and out-of-date signed java apps you need to make security exceptions. To do this first start the docker image with ```./javafox``` you should then have a file in $HOME/.javafox/.java/deployment/security/exception.sites where you can add your exceptions like this:
 
 ```
 https://192.168.254.0
@@ -45,8 +31,7 @@ https://192.168.254.1
 
 ## Other legacy Firefox versions
 
-There is an alternative `Dockerfile-legacy`.  This can be used to
-build historic images, although without Flash or Java.  Run
+There is an alternative `Dockerfile-legacy`.  This can be used to build historic images, although without Flash or Java.  Run
 
 ```
 docker build -t firefox:2 -f Dockerfile-legacy .
@@ -64,9 +49,7 @@ should work to make an image for Firefox 15.  See
 
 ## SElinux
 
-When SElinux is enabled, a container will not be allowed to access the
-X11 socket.  See `selinux/javafox.te` for the access needed (tested on
-Fedora 29).
+When SElinux is enabled, a container will not be allowed to access the X11 socket.  See `selinux/javafox.te` for the access needed (tested on Fedora 29).
 
 ## Thanks
 
