@@ -4,13 +4,28 @@ Java is going out of style and yet is needed to manage many different lights out
 
 Thanks to a pull request you can now also run ancient Firefoxes for those that need browsers to support ancient BMCs with ancient now-unsupported https: encryption.
 
+# Oracle license
+
+As of 2019-04-16 Oracle has changed the license for Java to a **very restrictive** license making these uses legal:
+
+```
+(i)     Personal Use,
+(ii)    Development Use,
+(iii)   Oracle Approved Product Use, and/or
+(iv)   Oracle Cloud Infrastructure Use.
+```
+
+The definition of "personal use" is such that you can't use "Javafox" with Oracle JDK for work purposes in any way without breaking their license.  Therefore you can at this point only use build newly built "Javafox" docker files with personal computers for personal purposes, for personally owned lights out systems unless you have a license from Oracle.  Thread carefuly.
+
+This package needs to be using OpenJDK. See https://github.com/niclan/Javafox/issues/8).
+
 ## Installing
 
 1. Install docker (docker.io)
 
 2. Clone this repository
 
-3. Download java (JRE 8 for Linux/AMD64 the tar.gz version) from https://www.oracle.com/technetwork/java/javase/jre8-downloads-2133155.html - this requires a oracle download account now (as of 2019-04-16) due to licensing.  (See also https://github.com/niclan/Javafox/issues/8).
+3. Download java (JRE 8 for Linux/AMD64 the tar.gz version) from https://www.oracle.com/technetwork/java/javase/jre8-downloads-2133155.html.
 
 4. Rename the jre to `jre-linux-x64.tar.gz`
 
