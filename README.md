@@ -12,7 +12,7 @@ As of 2019-04-16 Oracle has changed the license for Java to a **very restrictive
 (i)     Personal Use,
 (ii)    Development Use,
 (iii)   Oracle Approved Product Use, and/or
-(iv)   Oracle Cloud Infrastructure Use.
+(iv)    Oracle Cloud Infrastructure Use.
 ```
 
 The definition of "personal use" is such that you can't use "Javafox" with Oracle JDK for work purposes in any way without breaking their license.  Therefore you can at this point only use build newly built "Javafox" docker files with personal computers for personal purposes, for personally owned lights out systems unless you have a license from Oracle.  Thread carefuly.
