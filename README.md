@@ -10,7 +10,7 @@ Thanks to a pull request you can now also run ancient Firefoxes for those that n
 
 2. Clone this repository
 
-3. Download java from https://www.oracle.com/technetwork/java/javase/jre8-downloads-2133155.html - this requires a oracle download account now (as of 2019-04-16) due to licensing.  (See also https://github.com/niclan/Javafox/issues/8)
+3. Download java from https://www.oracle.com/technetwork/java/javase/jre8-downloads-2133155.html - this requires a oracle download account now (as of 2019-04-16) due to licensing.  (See also (https://github.com/niclan/Javafox/issues/8)[#8])
 
 4. Rename the jre to `jre-linux-x64.tar.gz`
 
