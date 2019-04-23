@@ -10,7 +10,11 @@ Thanks to a pull request you can now also run ancient Firefoxes for those that n
 
 2. Clone this repository
 
-3. Run ```docker build -t javafox .```  This makes a Ubuntu 16.04 docker image labeled "javafox" containing firefox-esr-52, java, flash and a account called ffuser.  The image is >1GB at time of creation. It will save caches and other config (java and firefox) outside the container in your home directory under ~/.javafox.
+3. Download java from https://www.oracle.com/technetwork/java/javase/jre8-downloads-2133155.html - this requires a oracle download account now (as of 2019-04-16) due to licensing.
+
+4. Rename the jre to `jre-linux-x64.tar.gz`
+
+4. Run ```docker build -t javafox .```  This makes a Ubuntu 16.04 docker image labeled "javafox" containing firefox-esr-52, java, flash and a account called ffuser.  The image is >1GB at time of creation. It will save caches and other config (java and firefox) outside the container in your home directory under ~/.javafox.
 
 ## Using
 

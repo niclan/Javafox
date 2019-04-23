@@ -18,11 +18,22 @@ RUN echo debconf shared/accepted-oracle-license-v1-1 select true | \
     debconf-set-selections && \
     echo debconf shared/accepted-oracle-license-v1-1 seen true | \
     debconf-set-selections && \
-    apt-add-repository -y ppa:webupd8team/java && \
     echo "deb http://archive.canonical.com/ubuntu xenial partner" | tee -a /etc/apt/sources.list && \
     apt-get -q update && \
-    apt-get -qy install oracle-java8-installer adobe-flashplugin
+    apt-get -qy install adobe-flashplugin
+
+RUN echo "Installing java"
     
+COPY jre-linux-x64.tar.gz /tmp
+
+RUN cd /usr/local/lib && \
+    tar xzf /tmp/jre-linux-x64.tar.gz && \
+    ln -s jre1.8.0* jre8 && \
+    rm -f /tmp/jre-linux-x64.tar.gz && \
+    ln -s /usr/local/lib/jre8/lib/amd64/libnpjp2.so /usr/lib/mozilla/plugins
+
+ENV JAVA_HOME /usr/local/lib/jre8
+
 USER ffuser
 RUN mkdir -p /home/ffuser/.java/deployment/security && \
     touch /home/ffuser/.java/deployment/security/exception.sites
