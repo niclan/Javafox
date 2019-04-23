@@ -8,7 +8,7 @@ Thanks to a pull request you can now also run ancient Firefoxes for those that n
 
 As of 2019-04-16 Oracle has changed the license for Java to a **very restrictive** license which is at odds with using this package at work at all.  Therefore the package has been updatet to use OpenJDK and the IcedTea Firefox plugin.  I have not tested the IcedTea plugin with e.g. HP iLO at all yet due to work and personal priorities.
 
-If you need to use Oracle Java 8 please refer to commit dd7ccd6 (https://github.com/niclan/Javafox/tree/dd7ccd683f61444b027779e2bdddd7be1bd9eac8) and note that you can not use it with anything but personal computers and personally owned equipment in any way.
+If you need to use Oracle Java 8 please refer to commit dd7ccd6 (https://github.com/niclan/Javafox/tree/dd7ccd683f61444b027779e2bdddd7be1bd9eac8) and note that you can not use it with anything but personal computers and personally owned equipment in any way unless you have a previously downloaded JRE you can use with it.
 
 ## Installing
 
