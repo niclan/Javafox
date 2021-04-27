@@ -5,9 +5,9 @@ RUN apt-get -q update && \
     apt-get -qy install libterm-readline-perl-perl dialog && \
     apt-get -qy install sudo apt-utils software-properties-common xauth dialog
 
-RUN apt-add-repository -y ppa:jonathonf/firefox-esr-52 && \
-    apt-get -q update && \
-    apt-get -qy install firefox-esr
+COPY deb/* /tmp/
+
+RUN dpkg -i /tmp/*.deb; apt-get -fqy install
 
 RUN useradd -m -s /bin/bash -c "Firefox user" ffuser && \
     mkdir -p /etc/sudoers.d && \
