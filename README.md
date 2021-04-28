@@ -18,7 +18,11 @@ Or if you have a paid up license with Oracle.
 
 2. Clone this repository
 
-3. Run ```docker build -t javafox .```  This makes a Ubuntu 16.04 docker image labeled "javafox" containing firefox-esr-52, java, flash and a account called ffuser.  The image is >1GB at time of creation. It will save caches and other config (java and firefox) outside the container in your home directory under ~/.javafox.
+3. (if on OSX): install XQuartz (xquartz.org)
+
+4. (if on OSX): reboot (needed for some env variables)
+
+5. Run ```docker build -t javafox .```  This makes a Ubuntu 16.04 docker image labeled "javafox" containing firefox-esr-52, java, flash and a account called ffuser.  The image is >1GB at time of creation. It will save caches and other config (java and firefox) outside the container in your home directory under ~/.javafox.
 
 ## Using
 

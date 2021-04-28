@@ -3,6 +3,13 @@
 XSOCK=/tmp/.X11-unix
 XAUTHD="$(mktemp -d)"
 XAUTH="$XAUTHD/xauth"
+OS=`uname`
+
+if [ "$OS" == "Darwin" ]; then
+    xhost + 127.0.0.1
+    DISPLAY=host.docker.internal:0
+fi
+
 
 BASE="${HOME}/.javafox"
 me=$(basename $0)
