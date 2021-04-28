@@ -62,3 +62,5 @@ When SElinux is enabled, a container will not be allowed to access the X11 socke
 ## Thanks
 
 Thanks to Ole for making this usable! And to Kjetilho for supporting ancient Firefoxen.
+
+Thanks to the Albuquerque Linux User Group for this article: https://www.abqlug.com/tutorials/how-to-install-firefox-esr-52-9-on-ubuntu-18-04/ and keeping a archive of the Firefox packages that I needed to resurect this thing in 2021.
