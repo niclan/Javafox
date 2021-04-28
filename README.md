@@ -4,11 +4,13 @@ Java is going out of style and yet is needed to manage many different lights out
 
 Thanks to a pull request you can now also run ancient Firefoxes for those that need browsers to support ancient BMCs with ancient now-unsupported https: encryption.
 
-## Oracle 
+## No Oracle No More
 
-As of 2019-04-16 Oracle has changed the license for Java to a **very restrictive** license which is at odds with using this package at work at all.  Therefore the package has been updatet to use OpenJDK and the IcedTea Firefox plugin.  I have not tested the IcedTea plugin with e.g. HP iLO at all yet due to work and personal priorities.
+As of 2019-04-16 Oracle has changed the license for Java to a **very restrictive** license which is at odds with using it at work at all.  Therefore the package has been updatet to use OpenJDK and the IcedTea Firefox plugin.  This combination still works well with HP iLO2 which is the oldest hardware I have access to.
 
 If you need to use Oracle Java 8 please refer to commit dd7ccd6 (https://github.com/niclan/Javafox/tree/dd7ccd683f61444b027779e2bdddd7be1bd9eac8) and note that you can not use it with anything but personal computers and personally owned equipment in any way unless you have a previously downloaded JRE you can use with it.
+
+Or if you have a paid up license with Oracle.
 
 ## Installing
 
@@ -28,6 +30,12 @@ To allow Java to run the unsecurely and out-of-date signed java apps you need to
 https://192.168.254.0
 https://192.168.254.1
 ```
+
+## Remote media
+
+I first needed to use this feature in 2021 so I'll just describe the workaround I used to access a media image file:
+
+You can copy image files into your host directory: `~/.javafox/.mozilla`.  In the contained javafox you can browse into the `HOME/.mozilla` directory and find the image file there.
 
 ## Other legacy Firefox versions
 
