@@ -3,7 +3,7 @@
 XSOCK=/tmp/.X11-unix
 XAUTHD="$(mktemp -d)"
 XAUTH="$XAUTHD/xauth"
-OS=`uname`
+OS="$(uname)"
 
 if [ "$OS" == "Darwin" ]; then
     xhost + 127.0.0.1
@@ -31,8 +31,9 @@ chmod 1777 "${BASE}/.mozilla"
 mkdir -p "${BASE}/.java/deployment/security"
 touch "${BASE}/.java/deployment/security/exception.sites"
 
-docker run -ti --rm --net=host -v $XSOCK:$XSOCK -v $XAUTHD:$XAUTHD -e XAUTHORITY=$XAUTH \
-       -e DISPLAY=$DISPLAY \
-       -v "${BASE}/.java:/home/ffuser/.java" -v "${BASE}/.mozilla:/home/ffuser/.mozilla" ${IMAGE} "$@"
+docker run -ti --rm --net=host -v $XSOCK:$XSOCK -v $XAUTHD:$XAUTHD \
+       -e XAUTHORITY=$XAUTH -e DISPLAY=$DISPLAY \
+       -v "${BASE}/.java:/home/ffuser/.java" \
+       -v "${BASE}/.mozilla:/home/ffuser/.mozilla" ${IMAGE} "$@"
 
 rm -rf $XAUTHD

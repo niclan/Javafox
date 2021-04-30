@@ -1,4 +1,7 @@
-FROM ubuntu:18.04
+FROM ubuntu:16.04
+
+ENV TZ=GMT
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get -q update && \
     apt-get -qy dist-upgrade && \
