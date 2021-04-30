@@ -24,7 +24,8 @@ RUN echo debconf shared/accepted-oracle-license-v1-1 select true | \
     
 USER ffuser
 RUN mkdir -p /home/ffuser/.java/deployment/security && \
-    touch /home/ffuser/.java/deployment/security/exception.sites
+    touch /home/ffuser/.java/deployment/security/exception.sites && \
+    touch /home/ffuser/.java/hp.properties
 
 COPY entrypoint.sh /home/ffuser
 
