@@ -1,5 +1,8 @@
 FROM ubuntu:18.04
 
+ENV TZ=GMT
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get -q update && \
     apt-get -qy dist-upgrade && \
     apt-get -qy install libterm-readline-perl-perl dialog && \
