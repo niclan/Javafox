@@ -22,7 +22,9 @@ Or if you have a paid up license with Oracle.
 
 4. (if on OSX): reboot (needed for some env variables)
 
-5. Run ```docker build -t javafox .```  This makes a Ubuntu 16.04 docker image labeled "javafox" containing firefox-esr-52, java, flash and a account called ffuser.  The image is >1GB at time of creation. It will save caches and other config (java and firefox) outside the container in your home directory under ~/.javafox.
+5. Review Dockerfile. E.g. about disabling modern TLS and such
+
+6. Run ```docker build -t javafox .```  This makes a Ubuntu 16.04 docker image labeled "javafox" containing firefox-esr-52, java, flash and a account called ffuser.  The image is >1GB at time of creation. It will save caches and other config (java and firefox) outside the container in your home directory under ~/.javafox.
 
 ## Using
 
@@ -95,3 +97,5 @@ Does not work:
   [Child 77] ###!!! ABORT: Aborting on channel error.: file /build/firefox-esr-MkDF_u/firefox-esr-52.9.0esr/ipc/glue/MessageChannel.cpp, line 2152
   [Child 77] ###!!! ABORT: Aborting on channel error.: file /build/firefox-esr-MkDF_u/firefox-esr-52.9.0esr/ipc/glue/MessageChannel.cpp, line 2152
   /home/ffuser/entrypoint.sh: line 16:    12 Trace/breakpoint trap   (core dumped) /usr/bin/firefox-esr -no-remote $@
+
+Therefore this container is based on Ubuntu 16.04.
