@@ -25,6 +25,8 @@ RUN echo debconf shared/accepted-oracle-license-v1-1 select true | \
     apt-get -q update && \
     apt-get -qy install adobe-flashplugin icedtea-8-plugin
     
+RUN echo "jdk.tls.disabledAlgorithms=TLSv1.1, TLSv1.2" >> /etc/java-8-openjdk/security/java.security
+
 USER ffuser
 RUN mkdir -p /home/ffuser/.java/deployment/security && \
     touch /home/ffuser/.java/deployment/security/exception.sites && \
