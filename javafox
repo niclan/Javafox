@@ -4,10 +4,16 @@ XSOCK=/tmp/.X11-unix
 XAUTHD="$(mktemp -d)"
 XAUTH="$XAUTHD/xauth"
 OS="$(uname)"
+HOST_HOME_DIR_PARAM=""
 
 if [ "$OS" == "Darwin" ]; then
     xhost + 127.0.0.1
     DISPLAY=host.docker.internal:0
+fi
+if [ "$OS" == "Linux" ]; then
+   # Mount local home directory
+   HOST_HOME_DIR_PARAM="-v $HOME:/home/ffuser/host_home/"
+   echo "Mounting host's home directory to /home/ffuser/host_home/"
 fi
 
 
@@ -34,6 +40,7 @@ touch "${BASE}/.java/deployment/security/exception.sites"
 docker run -ti --rm --net=host -v $XSOCK:$XSOCK -v $XAUTHD:$XAUTHD \
        -e XAUTHORITY=$XAUTH -e DISPLAY=$DISPLAY \
        -v "${BASE}/.java:/home/ffuser/.java" \
+       $HOST_HOME_DIR_PARAM \
        -v "${BASE}/.mozilla:/home/ffuser/.mozilla" ${IMAGE} "$@"
 
 rm -rf $XAUTHD
