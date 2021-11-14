@@ -11,8 +11,8 @@ if [ "$OS" == "Darwin" ]; then
     DISPLAY=host.docker.internal:0
 fi
 if [ "$OS" == "Linux" ]; then
-   # Mount local home directory
-   HOST_HOME_DIR_PARAM="-v $HOME:/home/ffuser/host_home/"
+   # Mount local home directory (read only), remove :ro for read/write access
+   HOST_HOME_DIR_PARAM="-v $HOME:/home/ffuser/host_home/:ro"
    echo "Mounting host's home directory to /home/ffuser/host_home/"
 fi
 

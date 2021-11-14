@@ -41,7 +41,7 @@ https://192.168.254.1
 
 I first needed to use this feature in 2021 so I'll just describe the workaround I used to access a media image file:
 
-On Linux based hosts, your $HOME directory will automatically be mounted to /home/ffuser/home_home/
+On Linux based hosts, your $HOME directory will automatically be mounted to /home/ffuser/home_home/ (read only)
 
 You can also copy image files into your host directory: `~/.javafox/.mozilla`.  In the contained javafox you can then browse to the `HOME/.mozilla` directory and find the image file there.
 
