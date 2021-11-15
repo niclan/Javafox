@@ -6,7 +6,7 @@ Thanks to a pull request you can now also run ancient Firefoxes for those that n
 
 ## No Oracle No More
 
-As of 2019-04-16 Oracle has changed the license for Java to a **very restrictive** license which is at odds with using it at work at all.  Therefore the package has been updatet to use OpenJDK and the IcedTea Firefox plugin.  This combination still works well with HP iLO2 which is the oldest hardware I have access to.
+As of 2019-04-16 Oracle has changed the license for Java to a **very restrictive** license which is at odds with using it at work at all.  Therefore the package has been updated to use OpenJDK and the IcedTea Firefox plugin.  This combination still works well with HP iLO2 which is the oldest hardware I have access to.
 
 If you need to use Oracle Java 8 please refer to commit dd7ccd6 (https://github.com/niclan/Javafox/tree/dd7ccd683f61444b027779e2bdddd7be1bd9eac8) and note that you can not use it with anything but personal computers and personally owned equipment in any way unless you have a previously downloaded JRE you can use with it.
 
@@ -37,13 +37,11 @@ https://192.168.254.0
 https://192.168.254.1
 ```
 
-## Remote media
+## Remote media, firmware files and such
 
 I first needed to use this feature in 2021 so I'll just describe the workaround I used to access a media image file:
 
-On Linux based hosts, your $HOME directory will automatically be mounted to /home/ffuser/home_home/ (read only)
-
-You can also copy image files into your host directory: `~/.javafox/.mozilla`.  In the contained javafox you can then browse to the `HOME/.mozilla` directory and find the image file there.
+On Linux based hosts, your $HOME directory will automatically be mounted to /home/ffuser/home_home/ (read only). So put your storage image or firmware files there or in a sub directory in order to mount or submit to your device.
 
 ## Other legacy Firefox versions
 
@@ -60,8 +58,7 @@ Dependencies have not been tested for all releases, but
 ```
 docker build --build-arg RELEASE=15.0.1 -t firefox:15 -f Dockerfile-legacy .
 ```
-should work to make an image for Firefox 15.  See
-<https://ftp.mozilla.org/pub/firefox/releases/> for the full archive.
+should work to make an image for Firefox 15.  See <https://ftp.mozilla.org/pub/firefox/releases/> for the full archive.
 
 ## SElinux
 
