@@ -41,7 +41,9 @@ https://192.168.254.1
 
 I first needed to use this feature in 2021 so I'll just describe the workaround I used to access a media image file:
 
-You can copy image files into your host directory: `~/.javafox/.mozilla`.  In the contained javafox you can browse into the `HOME/.mozilla` directory and find the image file there.
+On Linux based hosts, your $HOME directory will automatically be mounted to /home/ffuser/home_home/ (read only)
+
+You can also copy image files into your host directory: `~/.javafox/.mozilla`.  In the contained javafox you can then browse to the `HOME/.mozilla` directory and find the image file there.
 
 ## Other legacy Firefox versions
 
@@ -99,3 +101,7 @@ Does not work:
   /home/ffuser/entrypoint.sh: line 16:    12 Trace/breakpoint trap   (core dumped) /usr/bin/firefox-esr -no-remote $@
 
 Therefore this container is based on Ubuntu 16.04.
+
+## Tips
+- iLO, use the "Java Applet" instead of "Java Web Start"
+- iDRAC6, issue with Virtual Media when browsing to a folder containing special characters such as 'φ8' - rename or delete these files
