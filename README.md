@@ -74,28 +74,30 @@ Thanks to the Albuquerque Linux User Group for this article: https://www.abqlug.
 
 Works:
 - Firefox ESR 52 because it's the last version that supports the Java plugin
-- Java 8 because that's old enough to work with e.g. iLO2.  More recent 
+- Java 8 because that's old enough to work with e.g. iLO2.
 - Ubuntu 16.04 was current when Firefox ESR 52 was released
 
 Does not work:
 - Ubuntu 20.04 - No java 8.  Might work if we include icetea-8 and related packages in the repo.
 - Ubuntu 18.04 - should work according to the internet.  Most times gets me a X error:
 
-  (firefox-esr:12): Gdk-ERROR **: 06:54:01.372: The program 'firefox-esr' received an X Window System error.
-  This probably reflects a bug in the program.
-  The error was 'BadValue (integer parameter out of range for operation)'.
-    (Details: serial 367 error_code 2 request_code 130 (unknown) minor_code 3)
-    (Note to programmers: normally, X errors are reported asynchronously;
-     that is, you will receive the error a while after causing it.
-     To debug your program, run it with the GDK_SYNCHRONIZE environment
-     variable to change this behavior. You can then get a meaningful
-     backtrace from your debugger if you break on the gdk_x_error() function.)
-  ExceptionHandler::GenerateDump cloned child 94
-  ExceptionHandler::WaitForContinueSignal waiting for continue signal...
-  ExceptionHandler::SendContinueSignalToChild sent continue signal to child
-  [Child 77] ###!!! ABORT: Aborting on channel error.: file /build/firefox-esr-MkDF_u/firefox-esr-52.9.0esr/ipc/glue/MessageChannel.cpp, line 2152
-  [Child 77] ###!!! ABORT: Aborting on channel error.: file /build/firefox-esr-MkDF_u/firefox-esr-52.9.0esr/ipc/glue/MessageChannel.cpp, line 2152
-  /home/ffuser/entrypoint.sh: line 16:    12 Trace/breakpoint trap   (core dumped) /usr/bin/firefox-esr -no-remote $@
+```
+(firefox-esr:12): Gdk-ERROR **: 06:54:01.372: The program 'firefox-esr' received an X Window System error.
+This probably reflects a bug in the program.
+The error was 'BadValue (integer parameter out of range for operation)'.
+  (Details: serial 367 error_code 2 request_code 130 (unknown) minor_code 3)
+  (Note to programmers: normally, X errors are reported asynchronously;
+   that is, you will receive the error a while after causing it.
+   To debug your program, run it with the GDK_SYNCHRONIZE environment
+   variable to change this behavior. You can then get a meaningful
+   backtrace from your debugger if you break on the gdk_x_error() function.)
+ExceptionHandler::GenerateDump cloned child 94
+ExceptionHandler::WaitForContinueSignal waiting for continue signal...
+ExceptionHandler::SendContinueSignalToChild sent continue signal to child
+[Child 77] ###!!! ABORT: Aborting on channel error.: file /build/firefox-esr-MkDF_u/firefox-esr-52.9.0esr/ipc/glue/MessageChannel.cpp, line 2152
+[Child 77] ###!!! ABORT: Aborting on channel error.: file /build/firefox-esr-MkDF_u/firefox-esr-52.9.0esr/ipc/glue/MessageChannel.cpp, line 2152
+/home/ffuser/entrypoint.sh: line 16:    12 Trace/breakpoint trap   (core dumped) /usr/bin/firefox-esr -no-remote $@
+```
 
 Therefore this container is based on Ubuntu 16.04.
 
