@@ -10,7 +10,10 @@ RUN apt-get -q update && \
 
 COPY deb/* /tmp/
 
-RUN dpkg -i /tmp/*.deb; apt-get -fqy install
+# firefox-esr needs these. the list can probably be trimmed
+RUN apt-get install -y libasound2 libatk1.0-0 libcairo-gobject2 libcairo2 libfontconfig1 libfreetype6 libgdk-pixbuf2.0-0 libgtk-3-0 libgtk2.0-0 libpango-1.0-0 \
+    libstartup-notification0 libxt6 && \
+    dpkg -i /tmp/*.deb; apt-get -fqy install
 
 RUN useradd -m -s /bin/bash -c "Firefox user" ffuser && \
     mkdir -p /etc/sudoers.d && \
