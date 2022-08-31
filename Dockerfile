@@ -10,7 +10,7 @@ RUN apt-get -q update && \
 
 COPY deb/* /tmp/
 
-RUN dpkg -i /tmp/*.deb; apt-get -fqy install
+RUN apt-get -y install /tmp/*.deb
 
 RUN useradd -m -s /bin/bash -c "Firefox user" ffuser && \
     mkdir -p /etc/sudoers.d && \
