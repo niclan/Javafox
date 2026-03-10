@@ -1,5 +1,7 @@
 # Javafox
 
+*Note: I do not have any hardware that needs this anymore.  I'll leave it here in case someone is interested but I'm unable to support you in any way.  Good luck with your ancient but fully functional hardware.*
+
 Java is going out of style and yet is needed to manage many different lights out management systems such as HPs iLO and such.  To be able to continue manage hardware some specific combinations of browsers and java is needed.
 
 Thanks to a pull request you can now also run ancient Firefoxes for those that need browsers to support ancient BMCs with ancient now-unsupported https: encryption.
